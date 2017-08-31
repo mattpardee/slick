@@ -1123,13 +1123,19 @@
             verticalOffset = 0;
         }
 
-        if (_.options.centerMode === true && _.slideCount <= _.options.slidesToShow) {
-            _.slideOffset = ((_.slideWidth * Math.floor(_.options.slidesToShow)) / 2) - ((_.slideWidth * _.slideCount) / 2);
-        } else if (_.options.centerMode === true && _.options.infinite === true) {
-            _.slideOffset += _.slideWidth * Math.floor(_.options.slidesToShow / 2) - _.slideWidth;
-        } else if (_.options.centerMode === true) {
+        if (_.options.centerMode === true && _.options.infinite === true) {
+          _.slideOffset += _.slideWidth * Math.floor(_.options.slidesToShow / 2) - _.slideWidth;
+        } else if (_.options.centerMode === true && _.options.infinite === false) {
+          if(slideIndex >1 && slideIndex < _.slideCount - 2 ) {
             _.slideOffset = 0;
             _.slideOffset += _.slideWidth * Math.floor(_.options.slidesToShow / 2);
+          } else if (slideIndex === 1) {
+            _.slideOffset = 0;
+            _.slideOffset += _.slideWidth;
+          }
+        } else if (_.options.centerMode === true) {
+          _.slideOffset = 0;
+          _.slideOffset += _.slideWidth * Math.floor(_.options.slidesToShow / 2);
         }
 
         if (_.options.vertical === false) {
