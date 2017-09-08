@@ -2786,7 +2786,7 @@
         verticalSwipeLength = Math.round(Math.sqrt(
             Math.pow(_.touchObject.curY - _.touchObject.startY, 2)));
 
-        if (!_.options.verticalSwiping && !_.swiping && verticalSwipeLength > 4) {
+        if (!_.options.verticalSwiping && !_.swiping && verticalSwipeLength > _.options.swipeDelta || 4) {
             _.scrolling = true;
             return false;
         }
