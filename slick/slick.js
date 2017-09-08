@@ -1075,6 +1075,7 @@
     };
 
     Slick.prototype.getLeft = function(slideIndex) {
+        if (this.options.getLeft) return this.options.getLeft(this, slideIndex);
 
         var _ = this,
             targetLeft,
